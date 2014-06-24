@@ -1,0 +1,23 @@
+{
+    "name": "Pomodoit",
+    "version": "0.1",
+    "manifest_version": 2,
+    "description": "整合pomotodo.com 和doit.im",
+    "background":{
+        "scripts": ["js/common.js", "js/pomo.js", "js/doitim.js","js/background.js"]
+    },
+    "icons": {
+        "19": "images/icon_19.png",
+        "38": "images/icon_38.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.pomotodo.com/app/**"],
+            "css": ["css/style.css"],
+            "js": ["js/main.js"]
+        }
+    ],
+    "permissions": [
+        "cookies", "contextMenus", "tabs", "storage","notifications", "*://*/*", "\u003Call_urls\u003E"
+    ]
+}

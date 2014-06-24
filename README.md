@@ -1,4 +1,4 @@
 pomodoit
 ========
 
-整合pomotodo.com 和doit.im
+A Chrome extension to sync the tasks on pomotodo.com and those on doit.im.

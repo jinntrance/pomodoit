@@ -2,6 +2,25 @@
  * @author Joseph
  */
 
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    console.log("received method: "+request.method)
+    switch(request.method){
+        case "getLocalStorage":
+            sendResponse({data: localStorage});
+            break;
+        case "setLocalStorage":
+            window.localStorage=request.data;
+            sendResponse({data: localStorage});
+            break;
+        case 'openSettings':
+            chrome.tabs.create({url: chrome.runtime.getURL("options.html")+'#'+request.anchor});
+            sendResponse({data:{tabid:sender.tab.id}})
+            break;
+        default :
+            sendResponse({data:[]}); // snub them.
+    }
+});
+
 function syncData(){
     todayTasks(function(){
         completedList(function(){

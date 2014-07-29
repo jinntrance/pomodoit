@@ -18,7 +18,7 @@ function save_options() {
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
-    $("input[name=host][value="+localStorage["doit_host"]+"]").attr("checked",true);
+    document.querySelectorAll("input[name=host][value='"+localStorage["doit_host"]+"']")[0].checked=true;
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);

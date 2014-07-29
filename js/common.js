@@ -6,8 +6,24 @@ taskListKey="taskListKey";
 
 var hosts=['i.doit.im','i.doitim.com'];
 
+var openSetting=true
+
+function ls(){
+/**    chrome.extension.sendRequest({method: "getLocalStorage"}, function (response) {
+        for (var k in response.data)
+            localStorage[k] = response.data[k];
+    });
+*/
+    return localStorage;
+}
+
 function hostPrefix(){
-    return "https://"+hosts[1];//TODO
+    var saved_host=ls()['doit_host']
+    if(undefined==saved_host&&openSetting){
+        openSetting=false;
+        chrome.tabs.create({url: chrome.runtime.getURL("options.html")});
+        return "https://"+hosts[1];
+    }else saved_host;
 }
 
 function sync(){

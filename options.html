@@ -5,9 +5,43 @@
     <title>Settings</title>
     <link href="css/options.css" type="text/css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/options.css">
 </head>
 <body class="options">
+<div id="wrapper">
+    <div id="header"><h1>设置</h1></div>
+    <div id="options">
+        <fieldset>
+            <legend>服务器设置</legend>
+            <div id="shortcuts_table">
+                <div id="menu_shortcuts">
+                <div>
 
+                    <div class="option-set">请选择doit.im服务器：
+                        <label>
+                            <input name="host" type="radio" value="i.doitim.com" checked="checked">
+                        </label>大陆服务器
+                        <label>
+                            <input name="host" type="radio" value='i.doit.im' >
+                        </label>国际服务器
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </fieldset>
+
+
+
+        <div id="tip">
+            <span></span>
+        </div>
+    </div>
+    <div id="action_panel">
+        <div id="status"></div>
+        <input type="button" id="save" value="保存" />
+    </div>
+</div>
 </body>
 <script type="text/javascript" src="js/common.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/options.js" charset="UTF-8"></script>

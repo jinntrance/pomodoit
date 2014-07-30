@@ -18,12 +18,12 @@ function ls(){
 }
 
 function hostPrefix(){
-    var saved_host=ls()['doit_host']
+    var saved_host=ls().doit_host
     if(undefined==saved_host&&openSetting){
         openSetting=false;
         chrome.tabs.create({url: chrome.runtime.getURL("options.html")});
         return "https://"+hosts[1];
-    }else saved_host;
+    }else return "https://"+saved_host;
 }
 
 function sync(){

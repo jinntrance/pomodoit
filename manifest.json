@@ -1,6 +1,6 @@
 {
     "name": "Pomodoit",
-    "version": "0.1",
+    "version": "0.2",
     "manifest_version": 2,
     "description": "整合pomotodo.com 和doit.im",
     "background":{
@@ -8,8 +8,8 @@
     },
     "options_page": "options.html",
     "icons": {
-        "19": "images/icon_19.png",
-        "38": "images/icon_38.png"
+        "19": "images/icon-19.png",
+        "38": "images/icon-38.png"
     },
     "content_scripts": [
         {
@@ -20,5 +20,6 @@
     ],
     "permissions": [
         "cookies", "contextMenus", "tabs", "storage","notifications", "*://*/*", "\u003Call_urls\u003E"
-    ]
+    ],
+    "web_accessible_resources": ["images/icon-38.png"]
 }

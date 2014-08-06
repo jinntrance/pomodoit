@@ -79,17 +79,22 @@ function removeTask(task){
 }
 
 function notifyLogin(url){
-    var notification = webkitNotifications.createNotification("icon_48.png", "Login", "Login to Sync");
-    notification.addEventListener('click', function () {
-        notification.cancel();
+    var opt={
+        type: "basic",
+        title: "Login",
+        message: "Login to Sync",
+        iconUrl: "images/icon-38.png"
+    }
+    var notification = chrome.notifications.create(url,opt,function(notifyId){return notifyId});
+    chrome.notifications.onClicked.addListener( function (notifyId) {
+        chrome.notifications.clear(notifyId,function(){});
         chrome.tabs.create({
             url:url
         })
     });
     setTimeout(function(){
-        notification.cancel();
+        chrome.notifications.clear(url,function(){});
     },5000);
-    notification.show();
 }
 
 

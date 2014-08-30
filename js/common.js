@@ -36,12 +36,13 @@ function sync(){
     var todoList=pomoTodo.map(function(task){
         return task.description;
     });
-    //those tasks from doit that are already in pomo.
+    //here are those tasks previously from doit that are still in pomo TODO list.
     var doitRestList=doitData.filter(function (task) {
         var title=task.title;
+        //remove those already done in pomotodo
         if(pomoDoneList.some(function(e){return e.indexOf(title)>=0})){
-//            completeDoit(task);//TODO sync the done tasks from pomotodo to doit.im
-            return false;
+//            completeDoit(task); return false;//TODO sync the done tasks from pomotodo to doit.im, else retain it
+            return true;
         } else if(todoList.every(function(e){return e.indexOf(title)<0})){
             createPomoTask(task);
             return false;

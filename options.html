@@ -12,18 +12,19 @@
     <div id="header"><h1>设置</h1></div>
     <div id="options">
         <fieldset>
-            <legend>服务器设置</legend>
+            <legend id="legend">服务器设置</legend>
             <div id="shortcuts_table">
                 <div id="menu_shortcuts">
                 <div>
 
-                    <div class="option-set">请选择doit.im服务器：
+                    <div class="option-set">
+                        <span id="select_a_server">请选择doit.im服务器：</span>
                         <label>
                             <input name="host" type="radio" value="i.doitim.com" checked="checked">
-                        </label>大陆服务器
+                        </label><span id="china">大陆服务器</span>
                         <label>
                             <input name="host" type="radio" value='i.doit.im' >
-                        </label>国际服务器
+                        </label><span id="international">国际服务器</span>
                     </div>
                 </div>
 

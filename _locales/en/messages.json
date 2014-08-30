@@ -1,0 +1,29 @@
+{
+	"desc": {
+		"message":"Sync tasks from doit.im Today to pomotodo.com"
+	},
+	"settings": {
+		"message": "Settings"
+	},
+	"settings":{
+		"message": "Settings"
+	},
+	"server_selection": {
+		"message": "Set Your Server"
+	},
+	"select_a_server": {
+		"message": "Doit.im Server:"
+	},
+	"china":{
+		"message": "Mainland China"
+	},
+	"international": {
+		"message": "International"
+	},
+	"save": {
+		"message": "Save"
+	},
+	"saved": {
+		"message": "Saved Successfully"
+	}
+}

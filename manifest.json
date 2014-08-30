@@ -2,7 +2,8 @@
     "name": "Pomodoit",
     "version": "0.2.1",
     "manifest_version": 2,
-    "description": "Sync tasks from doit.im Today to pomotodo.com",
+    "description": "__MSG_desc__",
+    "default_locale": "zh",
     "background":{
         "scripts": ["js/common.js", "js/pomo.js", "js/doitim.js","js/background.js"]
     },

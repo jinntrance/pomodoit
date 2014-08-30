@@ -1,0 +1,29 @@
+{
+	"desc": {
+		"message":"同步doit.im当天任务到pomotodo.com"
+	},
+	"settings": {
+		"message": "设置"
+	},
+	"settings":{
+		"message": "设置"
+	},
+	"server_selection": {
+		"message": "服务器设置"
+	},
+	"select_a_server": {
+		"message": " 请选择doit.im服务器："
+	},
+	"china":{
+		"message": "大陆服务器"
+	},
+	"international": {
+		"message": "国际服务器"
+	},
+	"save": {
+		"message": "保存"
+	},
+	"saved": {
+		"message": "保存成功"
+	}
+}

@@ -1,8 +1,8 @@
 {
     "name": "Pomodoit",
-    "version": "0.2",
+    "version": "0.2.1",
     "manifest_version": 2,
-    "description": "整合pomotodo.com 和doit.im",
+    "description": "Sync tasks from doit.im Today to pomotodo.com",
     "background":{
         "scripts": ["js/common.js", "js/pomo.js", "js/doitim.js","js/background.js"]
     },

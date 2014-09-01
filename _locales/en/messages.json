@@ -25,5 +25,8 @@
 	},
 	"saved": {
 		"message": "Saved Successfully"
+	},
+	"doit_server": {
+		"message": "i.doit.im"
 	}
 }

@@ -25,5 +25,8 @@
 	},
 	"saved": {
 		"message": "保存成功"
+	},
+	"doit_server": {
+		"message": "i.doitim.com"
 	}
 }

@@ -22,7 +22,7 @@ function hostPrefix(){
     if(undefined==saved_host&&openSetting){
         openSetting=false;
         chrome.tabs.create({url: chrome.runtime.getURL("options.html")});
-        return "https://"+hosts[1];
+        return "https://"+chrome.i18n.getMessage('doit_server');
     }else return "https://"+saved_host;
 }
 

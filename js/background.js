@@ -41,7 +41,8 @@ function routinelyCheck(){
 function isUserSignedOn(hostUrl,name,loginUrl,callback) {
     chrome.cookies.get({"url": hostUrl, "name": name}, function (cookie) {
         if (cookie) {
-            localStorage.setItem(hostUrl+name, cookie);
+            console.info(cookie)
+            localStorage.setItem(hostUrl+"/"+name, cookie.name);
             callback();
         } else {
             localStorage.removeItem(hostUrl+name);

@@ -126,6 +126,8 @@ function requestJSON(url,callback,method,data){
             console.info('response object is:');
             console.info(json);
             callback(json);
+        } else if (401 == xhr.status) {
+            routinelyCheck()
         }
     };
     if(undefined!=data)

@@ -79,23 +79,37 @@ function removeTask(task){
     })
 }
 
+var notified = false
+
 function notifyLogin(url){
+    console.info("login needed")
     var opt={
         type: "basic",
         title: "Login",
         message: "Login to Sync",
         iconUrl: "images/icon-38.png"
     }
-    var notification = chrome.notifications.create(url,opt,function(notifyId){return notifyId});
+    var notId = Math.random().toString(36)
+    if (! notified) {
+        notification = chrome.notifications.create(notId,opt,function(notifyId){
+            console.info(notifyId + " was created.")
+            notified = true
+        });
+    }
     chrome.notifications.onClicked.addListener( function (notifyId) {
+        console.info("notification was clicked")
         chrome.notifications.clear(notifyId,function(){});
-        chrome.tabs.create({
-            url:url
-        })
+        if (notId == notifyId) {
+            chrome.tabs.create({
+                url:url
+            })
+        }
+        notified = false 
+
     });
     setTimeout(function(){
         chrome.notifications.clear(url,function(){});
-    },5000);
+    },7000);
 }
 
 
@@ -128,6 +142,7 @@ function requestJSON(url,callback,method,data){
             callback(json);
         } else if (401 == xhr.status) {
             routinelyCheck()
+            return false
         }
     };
     if(undefined!=data)

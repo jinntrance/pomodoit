@@ -1,6 +1,6 @@
 {
     "name": "Pomodoit",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "manifest_version": 2,
     "default_locale": "en",
     "description": "__MSG_desc__",
@@ -14,7 +14,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["*://*.pomotodo.com/app/**"],
+            "matches": ["https://*.pomotodo.com/app/**"],
             "css": ["css/style.css"],
             "js": ["js/main.js"]
         }

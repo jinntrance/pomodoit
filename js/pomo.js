@@ -62,14 +62,18 @@ function completedList(callback){
     requestJSON(url, function (json) {
         var today=new Date();
         var date=today.getDate();
-        var list=json.data.map(function(task){
-            var d=new Date(parseInt(task.end_time+'000'));
-            if(d.getDate()==date&& d.getHours()>=4)
-                return task.description;
-            else return '';
-        });
-        pomoDoneList=list;
-        chrome.storage.local.set({doneKey:list});
-        callback();
+        if ( true == json.error ){
+            notifyLogin(pomoHostPrefix+'/account#login');
+        } else {
+            var list=json.data.map(function(task){
+                var d=new Date(parseInt(task.end_time+'000'));
+                if(d.getDate()==date&& d.getHours()>=4)
+                    return task.description;
+                else return '';
+            });
+            pomoDoneList=list;
+            chrome.storage.local.set({doneKey:list});
+            callback();
+        }
     },"GET",undefined)
 }

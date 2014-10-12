@@ -12,6 +12,12 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
             window.localStorage=request.data;
             sendResponse({data: localStorage});
             break;
+        case "addLocalStorage":
+            for (var k in request.data){
+                window.localStorage[k] = request.data[k];
+            };
+            sendResponse({data: localStorage});
+            break;
         case 'openSettings':
             chrome.tabs.create({url: chrome.runtime.getURL("options.html")+'#'+request.anchor});
             sendResponse({data:{tabid:sender.tab.id}})
@@ -49,9 +55,11 @@ function isUserSignedOn(hostUrl,name,loginUrl,callback) {
             notifyLogin(hostUrl+loginUrl);
         }
     });
+    if (undefined == localStorage.session) {
+        notifyLogin(pomoHostPrefix+'/account#login');
+    }
 }
 
+lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : lego_token;
 
-
-    routinelyCheck();
-
+routinelyCheck();

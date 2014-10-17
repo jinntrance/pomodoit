@@ -112,7 +112,6 @@ function notifyLogin(url){
     },7000);
 }
 
-lego_token = "df7f4e67e8b8149e8461a8b2e8e629bbb11559d50ac835009ff4a05c22f95ac6"
 
 /**
  *

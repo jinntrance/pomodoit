@@ -16,6 +16,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
             for (var k in request.data){
                 window.localStorage[k] = request.data[k];
             };
+	    lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : lego_token;
             sendResponse({data: localStorage});
             break;
         case 'openSettings':

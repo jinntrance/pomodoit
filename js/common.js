@@ -86,7 +86,7 @@ function notifyLogin(url){
     var opt={
         type: "basic",
         title: "Login",
-        message: "Login to Sync",
+        message: "Login to Sync. " + url,
         iconUrl: "images/icon-38.png"
     }
     var notId = Math.random().toString(36)
@@ -109,7 +109,7 @@ function notifyLogin(url){
     });
     setTimeout(function(){
         chrome.notifications.clear(url,function(){});
-    },7000);
+    },8000);
 }
 
 

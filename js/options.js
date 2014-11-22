@@ -22,6 +22,7 @@ function save_options() {
         status.innerHTML = "";
     }, 750);
     chrome.extension.sendRequest({method: "setLocalStorage",data:localStorage});
+    chrome.extension.sendRequest({method: "checkLogin",data:localStorage});
 
 }
 

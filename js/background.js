@@ -23,6 +23,8 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
             chrome.tabs.create({url: chrome.runtime.getURL("options.html")+'#'+request.anchor});
             sendResponse({data:{tabid:sender.tab.id}})
             break;
+        case 'checkLogin':
+            routinelyCheck();
         default :
             sendResponse({data:[]}); // snub them.
     }
@@ -61,6 +63,6 @@ function isUserSignedOn(hostUrl,name,loginUrl,callback) {
     }
 }
 
-lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : lego_token;
+lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : undefined;
 
 routinelyCheck();

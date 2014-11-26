@@ -53,14 +53,27 @@ function sync(){
     pomoTodo.forEach(function (task) {
        if(doitRestList.every(function(title){return task.description.indexOf(title)<0})){
             donePomoTask(task);
+            removeTask(task);
        }
     })
 }
 
+function isEmpty(obj) {
+    for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
+
+    return true;
+}
+
 function storeTask(task){
-    chrome.storage.sync.get(taskListKey,function (list){
-        if(undefined==list)
-            list=[];
+    chrome.storage.sync.get(taskListKey,function (obj){
+        console.info("geting object from storage: " + taskListKey)
+        console.info(obj)
+        list=[];
+        if(! isEmpty(obj))
+            list=obj[taskListKey]
         list.push(task);
         chrome.storage.sync.set({
             taskListKey:list
@@ -69,8 +82,10 @@ function storeTask(task){
 }
 
 function removeTask(task){
-    chrome.storage.sync.get(taskListKey,function (list){
-        var newList=list.filter(function(e){
+    chrome.storage.sync.get(taskListKey,function (obj){
+        var newList= []
+        if(undefined != obj[taskListKey])
+            newList=obj[taskListKey].filter(function(e){
             return e.id!=task.id;
         })
         chrome.storage.sync.set({

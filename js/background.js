@@ -44,7 +44,7 @@ function routinelyCheck(){
     });
     setTimeout(function(){
         routinelyCheck();
-    },30*60*1000);
+    },30*60*1000); // 30 min
 }
 
 function isUserSignedOn(hostUrl,name,loginUrl,callback) {

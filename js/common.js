@@ -157,8 +157,15 @@ function requestJSON(url,callback,method,data){
             console.info(json);
             callback(json);
         } else if (401 == xhr.status) {
+            console.info("LOGIN needed")
+            if(-1<url.indexOf(hostPrefix())){
+                chrome.cookies.remove({"url": hostPrefix(), "name": 'autologin'})
+            }
+            if(-1<url.indexOf(pomoHostPrefix)){
+                chrome.cookies.remove({"url": pomoHostPrefix, "name": 'session'})
+            }
             routinelyCheck()
-            return false
+            return true;
         }
     };
     if(undefined!=data)

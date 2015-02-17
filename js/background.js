@@ -40,7 +40,7 @@ function syncData(){
 
 function routinelyCheck(){
     isUserSignedOn(hostPrefix(),'autologin','/signin',function(){
-        isUserSignedOn(pomoHostPrefix,'session','/account#login',syncData);
+        isUserSignedOn(pomoHostPrefix,'PHPSESSID','/account#login',syncData);
     });
     setTimeout(function(){
         routinelyCheck();
@@ -53,8 +53,8 @@ function isUserSignedOn(hostUrl,name,loginUrl,callback) {
             console.info(cookie)
             localStorage.setItem(hostUrl+"/"+name, cookie.name);
             callback();
-        } else {
-            localStorage.removeItem(hostUrl+name);
+        } else {    
+            localStorage.removeItem(hostUrl+"/"+name);
             notifyLogin(hostUrl+loginUrl);
         }
     });

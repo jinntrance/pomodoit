@@ -40,7 +40,7 @@ function syncData(){
 
 function routinelyCheck(){
     isUserSignedOn(hostPrefix(),'autologin','/signin',function(){
-        isUserSignedOn(pomoHostPrefix,'PHPSESSID','/account#login',syncData);
+        isUserSignedOn(pomoHostPrefix,'_ga','/account#login',syncData);
     });
     setTimeout(function(){
         routinelyCheck();

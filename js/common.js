@@ -162,7 +162,7 @@ function requestJSON(url,callback,method,data){
                 chrome.cookies.remove({"url": hostPrefix(), "name": 'autologin'})
             }
             if(-1<url.indexOf(pomoHostPrefix)){
-                chrome.cookies.remove({"url": pomoHostPrefix, "name": '_ga'})
+                chrome.cookies.remove({"url": pomoHostPrefix, "name": 'PHPSESSID'})
             }
             routinelyCheck()
             return true;

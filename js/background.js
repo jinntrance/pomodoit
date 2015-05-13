@@ -40,7 +40,11 @@ function syncData(){
 
 function routinelyCheck(){
     isUserSignedOn(hostPrefix(),'autologin','/signin',function(){
-        isUserSignedOn(pomoHostPrefix,'PHPSESSID','/account#login',syncData);
+        //isUserSignedOn(pomoHostPrefix,'PHPSESSID','/account#login',syncData);
+      var session = ls()['session'];
+      if( ! session || session.length == 0 || !  JSON.parse(session)['token'])
+        notifyLogin(pomoHostPrefix+'/account#login');
+      else  syncData();
     });
     setTimeout(function(){
         routinelyCheck();
@@ -65,4 +69,7 @@ function isUserSignedOn(hostUrl,name,loginUrl,callback) {
 
 lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : undefined;
 
+chrome.storage.sync.set({
+    taskListKey: []
+})  
 routinelyCheck();

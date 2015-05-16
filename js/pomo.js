@@ -22,10 +22,11 @@ function createPomoTask(doitTask){
         console.log(json.data.description+" created");
         var task=json.data;
         task.pin=doitTask.now;
-//        task.priority=doitTask.priority;
+        task.priority=doitTask.priority;
+        task.estimated_pomos=Math.ceil(doitTask.estimated_time/25.0);
         patchPomoTask(task);
         task['doit_task']=doitTask;
-        storeTask(task);
+        //storeTask(task);
     },'POST',{
         description: doitTask.title+suffix+prioritySuffix,
         pin: doitTask.now,

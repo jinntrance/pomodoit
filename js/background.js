@@ -69,6 +69,7 @@ function isUserSignedOn(hostUrl,name,loginUrl,callback) {
 
 lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : undefined;
 
+// everytime clear previous tasks when it restarts
 chrome.storage.sync.set({
     taskListKey: []
 })  

@@ -1,7 +1,7 @@
 pomodoit
 ========
 
-A [Chrome extension] syncing your tasks from [doit.im] to [pomotodo.com].
+It's a [Chrome extension] combining GTD and Pomodoro technique. Specifically it integrates the planing on [doit.im] with actions on [pomotodo.com].
 
 
 # Installation

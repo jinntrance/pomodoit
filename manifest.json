@@ -1,6 +1,6 @@
 {
     "name": "Pomodoit",
-    "version": "0.2.3.11",
+    "version": "0.2.4",
     "manifest_version": 2,
     "default_locale": "en",
     "description": "__MSG_desc__",
@@ -9,8 +9,9 @@
     },
     "options_page": "options.html",
     "icons": {
-        "19": "images/icon-19.png",
-        "38": "images/icon-38.png"
+        "12": "icons/icon_12.png",
+        "48": "icons/icon_48.png",
+        "128": "icons/icon_128.png"
     },
     "content_scripts": [
         {
@@ -22,5 +23,5 @@
     "permissions": [
         "cookies", "contextMenus", "tabs", "storage","notifications", "*://*/*", "\u003Call_urls\u003E"
     ],
-    "web_accessible_resources": ["images/icon-38.png"]
+    "web_accessible_resources": ["images/pomotodo-icon-38.png","images/doit-icon32.png"]
 }

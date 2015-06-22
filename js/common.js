@@ -9,11 +9,12 @@ var hosts=['i.doit.im','i.doitim.com'];
 var openSetting=true
 
 function ls(){
-/**    chrome.extension.sendRequest({method: "getLocalStorage"}, function (response) {
+    chrome.extension.sendRequest({method: "getLocalStorage"}, function (response) {
+    if(response) {
         for (var k in response.data)
             localStorage[k] = response.data[k];
+    }
     });
-*/
     return localStorage;
 }
 
@@ -102,7 +103,10 @@ function notifyLogin(url){
         type: "basic",
         title: "Login",
         message: "Login to Sync. " + url,
-        iconUrl: "images/icon-38.png"
+        iconUrl: "images/pomotodo-icon-38.png"
+    }
+    if(url.indexOf("doit")>-1) {
+        opt.iconUrl = "images/doit-icon32.png";
     }
     var notId = Math.random().toString(36)
     if (! notified) {

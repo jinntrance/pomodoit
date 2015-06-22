@@ -31,14 +31,21 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 });
 
 function syncData(){
+    var logon = 0;
     todayTasks(function(){
-        completedList(function(){
+        logon = logon + 1;
+        if( 2 == logon )
             todoList(sync);
-        })
+    });
+    completedList(function(){
+        logon = logon + 1;
+        if( 2 == logon )
+            todoList(sync);
     });
 }
 
 function routinelyCheck(){
+    var logon = 0;
     isUserSignedOn(hostPrefix(),'autologin','/signin',function(){
         //isUserSignedOn(pomoHostPrefix,'PHPSESSID','/account#login',syncData);
       var session = ls()['session'];

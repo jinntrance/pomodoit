@@ -37,6 +37,8 @@ function sync(){
     var todoList=pomoTodo.map(function(task){
         return task.description;
     });
+    // add the number of taks in todoList
+    chrome.browserAction.setBadgeText({text: String(todoList.length)})
     //here are those tasks previously from doit that are still in pomo TODO list.
     var doitRestList=doitData.filter(function (task) {
         var title=task.title;

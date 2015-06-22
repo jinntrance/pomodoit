@@ -7,6 +7,11 @@
     "background":{
         "scripts": ["js/common.js", "js/pomo.js", "js/doitim.js","js/background.js"]
     },
+    "browser_action": {
+        "default_icon": "icons/icon_48.png",
+        "default_popup": "popup.html",
+        "default_title": "Pomodoit"
+   },
     "options_page": "options.html",
     "icons": {
         "12": "icons/icon_12.png",

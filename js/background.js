@@ -25,23 +25,34 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
             break;
         case 'checkLogin':
             routinelyCheck();
+            break;
+        case 'sync':
+            syncData(function(){
+                sendResponse({data:{status: 2}});
+            })
+            break;
         default :
             sendResponse({data:[]}); // snub them.
     }
 });
 
-function syncData(){
+function syncData(callback){
     var logon = 0;
     todayTasks(function(){
         logon = logon + 1;
-        if( 2 == logon )
+        if( 2 == logon ){
             todoList(sync);
+            if(callback) callback(logon);
+        }
     });
     completedList(function(){
         logon = logon + 1;
-        if( 2 == logon )
+        if( 2 == logon ){
             todoList(sync);
+            if(callback) callback(logon);
+        }
     });
+    return logon;
 }
 
 function routinelyCheck(){

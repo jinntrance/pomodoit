@@ -1,3 +1,4 @@
+
 pomodoit
 ========
 
@@ -23,9 +24,11 @@ If you can not access Chrome Web Store, for instance, if you're in China, follow
 
 ## Settings
 
-* After installation, goto 
+* After installation, goto extension setting at 
   `chrome-extension://nicplokppngheaejhggneaclnojhmkag/options.html` 
-  to correctly set your *doit.im* server, from which your synced _Pomotodo_ tasks would come.
+  to: 
+  * correctly set your **Doit.im** server, from which your synced _Pomotodo_ tasks would come. 
+  * and save your **Pomotodo** access token from [Personal Access Token](https://pomotodo.com/developer), 
 * Make sure you are logged in both [doit.im] and [pomotodo.com], and then your tasks would be synced every time you start/restart Google Chrome and every 30 minutes after Chrome start/restart.
 
 <script type="text/javascript" src="http://www.josephjctang.com/assets/js/analytics.js" async="async"></script>

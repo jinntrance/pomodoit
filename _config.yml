@@ -1,0 +1,8 @@
+title: Pomodoit
+description: combine GTD (doit.im) and Pomodoro technique (pomotodo.com)
+google_analytics: UA-39438576-1
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions

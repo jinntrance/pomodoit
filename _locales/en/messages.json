@@ -34,5 +34,8 @@
 	},
 	"click_to_get": {
 		"message": "Click to get"
+	},
+	"help": {
+		"message": "Help"
 	}
 }

@@ -34,5 +34,8 @@
 	},
 	"click_to_get": {
 		"message": "点此查询"
+	},
+	"help": {
+		"message": "设置帮助"
 	}
 }

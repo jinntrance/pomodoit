@@ -22,6 +22,10 @@ function createDoitTask(){
 
 }
 
+/**
+ * get today task from doit.im
+ * @param callback
+ */
 function todayTasks(callback){
     var url=hostPrefix()+'/api/tasks/today';
     requestJSON(url,function(json){

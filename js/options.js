@@ -58,3 +58,4 @@ s('#international').innerHTML=msg('international');
 s('#pomotodo_setting').innerHTML=msg('pomotodo_setting');
 s('#set_token').innerHTML=msg('set_token');
 s('#click_to_get').innerHTML=msg('click_to_get');
+s('#help').innerHTML=msg('help');

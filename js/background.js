@@ -3,7 +3,7 @@
  */
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-    console.log("received method: "+request.method)
+    console.log("received method: "+request.method);
     switch(request.method){
         case "getLocalStorage":
             sendResponse({data: localStorage});
@@ -21,7 +21,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
             break;
         case 'openSettings':
             chrome.tabs.create({url: chrome.runtime.getURL("options.html")+'#'+request.anchor});
-            sendResponse({data:{tabid:sender.tab.id}})
+            sendResponse({data:{tabid:sender.tab.id}});
             break;
         case 'checkLogin':
             routinelyCheck();
@@ -29,7 +29,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
         case 'sync':
             syncData(function(){
                 sendResponse({data:{status: 2}});
-            })
+            });
             break;
         default :
             sendResponse({data:[]}); // snub them.
@@ -56,11 +56,10 @@ function syncData(callback){
 }
 
 function routinelyCheck(){
-    var logon = 0;
     isUserSignedOn(hostPrefix(),'autologin','/signin',function(){
-        isUserSignedOn(pomoAPIPrefix,'PHPSESSID','/account#login',syncData);
+        isUserSignedOn(pomoHostPrefix,'QINGCLOUDELB','/account#login',syncData);
       var session = ls()['session'];
-      if( ! session || session.length == 0 || !  JSON.parse(session)['token'])
+      if( !session || session.length == 0 || !JSON.parse(session)['token'] || !localStorage['token'])
         notifyLogin(pomoLoginUrl);
       else  syncData();
     });
@@ -90,5 +89,5 @@ lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token
 // everytime clear previous tasks when it restarts
 chrome.storage.sync.set({
     taskListKey: []
-})  
+});
 routinelyCheck();

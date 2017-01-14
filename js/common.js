@@ -59,7 +59,7 @@ function sync(){
     });
     pomoTodo.forEach(function (task) {
        if(doitRestList.every(function(title){return task.description.indexOf(title)<0})){
-            donePomoTask(task);
+            finishPomoTask(task);
             removeTask(task);
        }
     });
@@ -107,7 +107,10 @@ function removeTask(task){
 var notified = false;
 
 function notifyLogin(url){
-    console.info("login needed")
+    console.info("login needed at " + url);
+    if(!url || url.indexOf("http") < 0) {
+        return;
+    }
     var opt={
         type: "basic",
         title: "Login",

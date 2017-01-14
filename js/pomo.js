@@ -5,7 +5,8 @@
 todoKey='pomo.todo';
 doneKey='pomo.done';
 pomoAPIPrefix='https://api.pomotodo.com/1/';
-pomoLoginUrl='https://pomotodo.com/account#login';
+pomoHostPrefix='https://pomotodo.com';
+pomoLoginUrl= pomoHostPrefix + '/account#login';
 
 function createPomoTask(doitTask){
     var url= pomoAPIPrefix + '/todos';
@@ -36,7 +37,7 @@ function createPomoTask(doitTask){
     })
 }
 
-function donePomoTask(task){
+function finishPomoTask(task){
     var url= pomoAPIPrefix + '/todos/' + task.uuid;
     requestJSON(url,function(json){
     },"PATCH",{
@@ -44,12 +45,20 @@ function donePomoTask(task){
     })
 }
 
+/**
+ * change a task
+ * @param task
+ */
 function patchPomoTask(task){
     var url= pomoAPIPrefix + '/todos/' + task.uuid;
     requestJSON(url,function(json){
     },"PATCH",task)
 }
 
+/**
+ * get unfinished tasks
+ * @param callback
+ */
 function todoList(callback){
     var url= pomoAPIPrefix + '/todos?completed=false';
     requestJSON(url, function (json) {
@@ -59,6 +68,10 @@ function todoList(callback){
     },"GET",undefined)
 }
 
+/**
+ * get finished tasks
+ * @param callback
+ */
 function completedList(callback){
     var url= pomoAPIPrefix + "/todos?completed=true";
     requestJSON(url, function (json) {

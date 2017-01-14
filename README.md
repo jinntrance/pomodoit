@@ -31,8 +31,13 @@ If you can not access Chrome Web Store, for instance, if you're in China, follow
   * and save your **Pomotodo** access token from [Personal Access Token](https://pomotodo.com/developer), 
 * Make sure you are logged in both [doit.im] and [pomotodo.com], and then your tasks would be synced every time you start/restart Google Chrome and every 30 minutes after Chrome start/restart.
 
-<script type="text/javascript" src="http://www.josephjctang.com/assets/js/analytics.js" async="async"></script>
 
+## Reference
+
+- [Pomotodo API](https://pomotodo.github.io/api-doc/)
+- [Doit.im API](http://help.doitim.com/topics/1902)
+
+<script type="text/javascript" src="http://www.josephjctang.com/assets/js/analytics.js" async="async"></script>
 
 [doit.im]: http://doit.im/
 [pomotodo.com]: https://pomotodo.com/

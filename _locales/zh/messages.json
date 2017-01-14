@@ -5,11 +5,8 @@
 	"settings": {
 		"message": "设置"
 	},
-	"settings":{
-		"message": "设置"
-	},
-	"server_selection": {
-		"message": "服务器设置"
+	"doit_setting": {
+		"message": "Doit.im 设置"
 	},
 	"select_a_server": {
 		"message": " 请选择doit.im服务器："
@@ -28,5 +25,14 @@
 	},
 	"doit_server": {
 		"message": "i.doitim.com"
+	},
+	"pomotodo_setting": {
+		"message": "Pomotodo 设置"
+	},
+	"set_token": {
+		"message": "请填写访问Token "
+	},
+	"click_to_get": {
+		"message": "点此查询"
 	}
 }

@@ -5,11 +5,8 @@
 	"settings": {
 		"message": "Settings"
 	},
-	"settings":{
-		"message": "Settings"
-	},
-	"server_selection": {
-		"message": "Set Your Server"
+	"doit_setting": {
+		"message": "Doit.im Settings"
 	},
 	"select_a_server": {
 		"message": "Doit.im Server:"
@@ -28,5 +25,14 @@
 	},
 	"doit_server": {
 		"message": "i.doit.im"
+	},
+	"pomotodo_setting": {
+		"message": "Pomotodo Settings"
+	},
+	"set_token": {
+		"message": "Please input your access token "
+	},
+	"click_to_get": {
+		"message": "Click to get"
 	}
 }

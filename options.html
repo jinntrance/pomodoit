@@ -12,13 +12,13 @@
     <div id="header"><h1>设置</h1></div>
     <div id="options">
         <fieldset>
-            <legend id="legend">服务器设置</legend>
+            <legend id="doit_setting">Doit.im 设置</legend>
             <div id="shortcuts_table">
                 <div id="menu_shortcuts">
                 <div>
 
                     <div class="option-set">
-                        <span id="select_a_server">请选择doit.im服务器：</span>
+                        <span id="select_a_server">请选择Doit.im服务器：</span>
                         <label>
                             <input name="host" type="radio" value="i.doitim.com" checked="checked">
                         </label><span id="china">大陆服务器</span>
@@ -27,6 +27,26 @@
                         </label><span id="international">国际服务器</span>
                     </div>
                 </div>
+
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend id="pomotodo_setting">Pomotodo 设置</legend>
+            <div id="pomo_settings">
+                <div id="menu_pomo">
+                    <div>
+
+                        <div class="option-set">
+                            <span id="set_token">请填写访问Token</span>
+                            <a href="https://pomotodo.com/developer" target="_blank">(<span id="click_to_get">点此查询</span>)</a>：
+                            <br/>
+                            <label>
+                                <textarea name="token" type="text" value="" rows="2" cols="80" style="margin: 10px;padding: 4px;"></textarea>
+                            </label>
+                        </div>
+                    </div>
 
                 </div>
             </div>

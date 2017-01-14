@@ -15,8 +15,8 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
         case "addLocalStorage":
             for (var k in request.data){
                 window.localStorage[k] = request.data[k];
-            };
-	    lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : lego_token;
+            }
+	        lego_token = (_ref = localStorage.session) != undefined ? JSON.parse(_ref).token : lego_token;
             sendResponse({data: localStorage});
             break;
         case 'openSettings':
@@ -58,10 +58,10 @@ function syncData(callback){
 function routinelyCheck(){
     var logon = 0;
     isUserSignedOn(hostPrefix(),'autologin','/signin',function(){
-        //isUserSignedOn(pomoHostPrefix,'PHPSESSID','/account#login',syncData);
+        isUserSignedOn(pomoAPIPrefix,'PHPSESSID','/account#login',syncData);
       var session = ls()['session'];
       if( ! session || session.length == 0 || !  JSON.parse(session)['token'])
-        notifyLogin(pomoHostPrefix+'/account#login');
+        notifyLogin(pomoLoginUrl);
       else  syncData();
     });
     setTimeout(function(){
@@ -81,7 +81,7 @@ function isUserSignedOn(hostUrl,name,loginUrl,callback) {
         }
     });
     if (undefined == localStorage.session) {
-        notifyLogin(pomoHostPrefix+'/account#login');
+        notifyLogin(loginUrl);
     }
 }
 

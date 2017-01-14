@@ -4,10 +4,11 @@
 
 todoKey='pomo.todo';
 doneKey='pomo.done';
-pomoHostPrefix='https://pomotodo.com/';
+pomoAPIPrefix='https://api.pomotodo.com/1/';
+pomoLoginUrl='https://pomotodo.com/account#login';
 
 function createPomoTask(doitTask){
-    var url=pomoHostPrefix+'/api/todo';
+    var url= pomoAPIPrefix + '/todos';
     var prioritySuffix='';
     for(var i=0;i<doitTask.priority;i++)
         prioritySuffix+='!';
@@ -23,7 +24,7 @@ function createPomoTask(doitTask){
         var task=json.data;
         task.pin=doitTask.now;
         task.priority=doitTask.priority;
-        task.estimated_pomos=Math.ceil(doitTask.estimated_time/25.0);
+        task.estimated_pomo_count=Math.ceil(doitTask.estimated_time/25.0);
         patchPomoTask(task);
         task['doit_task']=doitTask;
         //storeTask(task);
@@ -36,41 +37,36 @@ function createPomoTask(doitTask){
 }
 
 function donePomoTask(task){
-    var url=pomoHostPrefix+'/api/todo/'+task.id;
-    task.completed=true;
-    task.status='finished';
+    var url= pomoAPIPrefix + '/todos/' + task.uuid;
     requestJSON(url,function(json){
-    },"PATCH",task)
+    },"PATCH",{
+        "completed":true
+    })
 }
 
 function patchPomoTask(task){
-    var url=pomoHostPrefix+'/api/todo/'+task.id;
+    var url= pomoAPIPrefix + '/todos/' + task.uuid;
     requestJSON(url,function(json){
     },"PATCH",task)
 }
 
 function todoList(callback){
-    var url=pomoHostPrefix+'/api/todo';
+    var url= pomoAPIPrefix + '/todos?completed=false';
     requestJSON(url, function (json) {
-        pomoTodo=json.data;
-        chrome.storage.local.set({todoKey:json.data});
+        pomoTodo = json;
+        chrome.storage.local.set({todoKey:json});
         callback();
     },"GET",undefined)
 }
 
 function completedList(callback){
-    var url=pomoHostPrefix+"/api/pomo?days=1";
+    var url= pomoAPIPrefix + "/todos?completed=true";
     requestJSON(url, function (json) {
-        var today=new Date();
-        var date=today.getDate();
         if ( true == json.error ){
-            notifyLogin(pomoHostPrefix+'/account#login');
+            notifyLogin(pomoLoginUrl);
         } else {
-            var list=json.data.map(function(task){
-                var d=new Date(parseInt(task.end_time+'000'));
-                if(d.getDate()==date&& d.getHours()>=4)
-                    return task.description;
-                else return '';
+            var list=json.map(function(task){
+                return task.description;
             });
             pomoDoneList=list;
             chrome.storage.local.set({doneKey:list});

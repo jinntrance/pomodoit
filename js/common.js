@@ -8,18 +8,22 @@ var hosts=['i.doit.im','i.doitim.com'];
 
 var openSetting=true
 
-function ls(){
+function ls(callback){
     chrome.extension.sendRequest({method: "getLocalStorage"}, function (response) {
-    if(response) {
-        for (var k in response.data)
-            localStorage[k] = response.data[k];
-    }
+        if (response) {
+            for (var k in response.data) {
+                localStorage[k] = response.data[k];
+            }
+        }
+        if (callback) {
+            callback(localStorage)
+        }
     });
     return localStorage;
 }
 
 function hostPrefix(){
-    var saved_host=ls().doit_host
+    var saved_host=ls().doit_host;
     if(undefined==saved_host&&openSetting){
         openSetting=false;
         chrome.tabs.create({url: chrome.runtime.getURL("options.html")});
@@ -37,8 +41,7 @@ function sync(){
     var todoList=pomoTodo.map(function(task){
         return task.description;
     });
-    // add the number of taks in todoList
-    chrome.browserAction.setBadgeText({text: String(todoList.length)})
+    var addedTasksNum = 0;
     //here are those tasks previously from doit that are still in pomo TODO list.
     var doitRestList=doitData.filter(function (task) {
         var title=task.title;
@@ -48,6 +51,7 @@ function sync(){
             return true;
         } else if(todoList.every(function(e){return e.indexOf(title)<0})){
             createPomoTask(task);
+            addedTasksNum++;
             return false;
         }else return true;
     }).map(function(task){
@@ -58,7 +62,10 @@ function sync(){
             donePomoTask(task);
             removeTask(task);
        }
-    })
+    });
+
+    // add the number of taks in todoList
+    chrome.browserAction.setBadgeText({text: String(todoList.length + addedTasksNum)});
 }
 
 function isEmpty(obj) {
@@ -97,7 +104,7 @@ function removeTask(task){
     })
 }
 
-var notified = false
+var notified = false;
 
 function notifyLogin(url){
     console.info("login needed")
@@ -155,6 +162,10 @@ function requestJSON(url,callback,method,data){
     xhr.open(method, url, true);//GET url asyncly。
     xhr.setRequestHeader("Content-type",mime_string);
     xhr.setRequestHeader("X-Lego-Token",lego_token);
+    // xhr.setRequestHeader("Authorization","token " + lego_token);
+    if(localStorage["token"]) {
+        xhr.setRequestHeader("Authorization", "token " + localStorage["token"]);
+    }
     xhr.overrideMimeType(mime_string);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200 ) {
@@ -167,10 +178,10 @@ function requestJSON(url,callback,method,data){
             if(-1<url.indexOf(hostPrefix())){
                 chrome.cookies.remove({"url": hostPrefix(), "name": 'autologin'})
             }
-            if(-1<url.indexOf(pomoHostPrefix)){
-                chrome.cookies.remove({"url": pomoHostPrefix, "name": 'PHPSESSID'})
+            if(-1<url.indexOf(pomoAPIPrefix)){
+                chrome.cookies.remove({"url": pomoAPIPrefix, "name": 'PHPSESSID'})
             }
-            routinelyCheck()
+            // routinelyCheck();
             return true;
         }
     };
